@@ -21,7 +21,7 @@ def pregunta_01():
     214
 
     """
-    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+    with open("data.csv","r") as file:
         datos = file.readlines()
         d_lista = [line.split("\t") for line in datos]
         col2 = [int(i[1]) for i in d_lista]
@@ -45,7 +45,7 @@ def pregunta_02():
     ]
 
     """
-    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+    with open("data.csv","r") as file:
         datos = file.readlines()
         d_lista = [line.split("\t") for line in datos]
         col1 = [i[0] for i in d_lista]
@@ -72,7 +72,7 @@ def pregunta_03():
     ]
 
     """
-    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+    with open("data.csv","r") as file:
         datos = file.readlines()
         d_lista = [line.split("\t") for line in datos]
         cols = [i[0:2] for i in d_lista]
@@ -105,7 +105,7 @@ def pregunta_04():
     ]
 
     """
-    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+    with open("data.csv","r") as file:
         datos = file.readlines()
         d_lista = [line.split("\t") for line in datos]
         col3 = [i[2] for i in d_lista]
