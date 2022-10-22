@@ -21,7 +21,13 @@ def pregunta_01():
     214
 
     """
-    return
+    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col2 = [int(i[1]) for i in d_lista]
+        r1 = sum(col2)
+    
+    return r1
 
 
 def pregunta_02():
@@ -39,7 +45,16 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col1 = [i[0] for i in d_lista]
+        dic = {key:0 for key in col1}
+        for key in dic:
+            dic[key] = col1.count(key)
+        r2 = sorted(dic.items())
+    
+    return r2
 
 
 def pregunta_03():
@@ -57,7 +72,15 @@ def pregunta_03():
     ]
 
     """
-    return
+    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [i[0:2] for i in d_lista]
+        dic = {key[0]:0 for key in cols}
+        for col in cols:
+            dic[col[0]] += int(col[1])
+        r3 = sorted(dic.items())
+    return r3
 
 
 def pregunta_04():
@@ -82,7 +105,18 @@ def pregunta_04():
     ]
 
     """
-    return
+    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col3 = [i[2] for i in d_lista]
+        col3 = [i.split("-") for i in col3]
+        meses = [i[1] for i in col3]
+        dic = {key:0 for key in meses}
+        for key in dic:
+            dic[key] = meses.count(key)
+        r4 = sorted(dic.items())
+        
+    return r4
 
 
 def pregunta_05():
@@ -100,6 +134,10 @@ def pregunta_05():
     ]
 
     """
+    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        
     return
 
 
