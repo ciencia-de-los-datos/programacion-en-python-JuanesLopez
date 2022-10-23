@@ -337,10 +337,21 @@ def pregunta_11():
 
 
     """
-    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+    with open("data.csv","r") as file:
         datos = file.readlines()
         d_lista = [line.split("\t") for line in datos]
-    return
+        cols = [(i[3],i[1]) for i in d_lista]
+        cols = [(i[0].split(","),i[1]) for i in cols]
+        lista=[]
+        for i in cols:
+            for j in i[0]:
+                lista.append((j,i[1]))
+        dic = dict(lista)
+        for key in dic:
+            dic[key] = sum(int(y) for (x,y) in lista if x == key)
+        r11 = dict(sorted(dic.items()))
+        
+    return r11
 
 
 def pregunta_12():
@@ -358,4 +369,20 @@ def pregunta_12():
     }
 
     """
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [(i[0],i[4]) for i in d_lista]
+        cols = [(i[0],i[1].split(",")) for i in cols]
+        lista =[]
+        for i in cols:
+            aux = 0
+            for j in i[1]:
+                a,b = j.split(":")
+                aux += int(b)
+            lista.append((i[0],aux))
+        dic = dict(lista)
+        for key in dic:
+            dic[key] = sum(y for (x,y) in lista if x == key)
+        r12 = dict(sorted(dic.items()))
     return
