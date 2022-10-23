@@ -385,4 +385,4 @@ def pregunta_12():
         for key in dic:
             dic[key] = sum(y for (x,y) in lista if x == key)
         r12 = dict(sorted(dic.items()))
-    return
+    return r12
