@@ -21,7 +21,13 @@ def pregunta_01():
     214
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col2 = [int(i[1]) for i in d_lista]
+        r1 = sum(col2)
+    
+    return r1
 
 
 def pregunta_02():
@@ -39,7 +45,16 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col1 = [i[0] for i in d_lista]
+        dic = {key:0 for key in col1}
+        for key in dic:
+            dic[key] = col1.count(key)
+        r2 = sorted(dic.items())
+    
+    return r2
 
 
 def pregunta_03():
@@ -57,7 +72,15 @@ def pregunta_03():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [i[0:2] for i in d_lista]
+        dic = {key[0]:0 for key in cols}
+        for col in cols:
+            dic[col[0]] += int(col[1])
+        r3 = sorted(dic.items())
+    return r3
 
 
 def pregunta_04():
@@ -82,7 +105,18 @@ def pregunta_04():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col3 = [i[2] for i in d_lista]
+        col3 = [i.split("-") for i in col3]
+        meses = [i[1] for i in col3]
+        dic = {key:0 for key in meses}
+        for key in dic:
+            dic[key] = meses.count(key)
+        r4 = sorted(dic.items())
+        
+    return r4
 
 
 def pregunta_05():
@@ -100,7 +134,15 @@ def pregunta_05():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [i[0:2] for i in d_lista]
+        cols = [(i[0], int(i[1])) for i in cols]
+        dic = dict(cols)
+        r5 = [(i, max(y for (x,y) in cols if x==i), min(y for (x,y) in cols if x==i)) for i in dic]
+        r5 = sorted(r5)
+    return r5
 
 
 def pregunta_06():
@@ -125,7 +167,20 @@ def pregunta_06():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col5 = [i[4] for i in d_lista]
+        col5 = [i.split(",") for i in col5]
+        lista = []
+        for i in col5:
+            for j in i:
+                aux1, aux2 = j.split(":")
+                lista.append((aux1,int(aux2)))
+        dic = dict(lista)
+        r6 = [(i, min(y for (x,y) in lista if x==i), max(y for (x,y) in lista if x==i)) for i in dic]
+        r6 = sorted(r6)
+    return r6
 
 
 def pregunta_07():
@@ -149,7 +204,18 @@ def pregunta_07():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [i[0:2] for i in d_lista]
+        dic = {int(i[1]):0 for i in cols}
+        for key in dic:
+            aux =[]
+            for i in [a for (a,b) in cols if int(b) == key]:
+                aux.append(i)
+            dic[key]=aux
+        r7 = sorted(dic.items())
+    return r7
 
 
 def pregunta_08():
@@ -174,7 +240,16 @@ def pregunta_08():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [i[0:2] for i in d_lista]
+        dic = {int(i[1]):0 for i in cols}
+        for key in dic:
+            aux =dict([(a,b) for (a,b) in cols if int(b) == key])
+            dic[key]=list(sorted(aux))
+        r8 = sorted(dic.items())
+    return r8
 
 
 def pregunta_09():
@@ -197,7 +272,21 @@ def pregunta_09():
     }
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col5 = [i[4] for i in d_lista]
+        col5 = [i.split(",") for i in col5]
+        lista = []
+        for i in col5:
+            for j in i:
+                aux1, aux2 = j.split(":")
+                lista.append(aux1)
+        dic = {x:0 for x in lista}
+        for key in dic:
+            dic[key] = lista.count(key)
+        r9 = dict(sorted(dic.items()))
+    return r9
 
 
 def pregunta_10():
@@ -218,7 +307,16 @@ def pregunta_10():
 
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [(i[0],i[3],i[4]) for i in d_lista]
+        r10=[]
+        for i in cols:
+            aux = i[1].split(",")
+            aux2 = i[2].split(",")
+            r10.append((i[0],len(aux),len(aux2)))
+    return r10
 
 
 def pregunta_11():
@@ -239,7 +337,21 @@ def pregunta_11():
 
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [(i[3],i[1]) for i in d_lista]
+        cols = [(i[0].split(","),i[1]) for i in cols]
+        lista=[]
+        for i in cols:
+            for j in i[0]:
+                lista.append((j,i[1]))
+        dic = dict(lista)
+        for key in dic:
+            dic[key] = sum(int(y) for (x,y) in lista if x == key)
+        r11 = dict(sorted(dic.items()))
+        
+    return r11
 
 
 def pregunta_12():
@@ -257,4 +369,20 @@ def pregunta_12():
     }
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [(i[0],i[4]) for i in d_lista]
+        cols = [(i[0],i[1].split(",")) for i in cols]
+        lista =[]
+        for i in cols:
+            aux = 0
+            for j in i[1]:
+                a,b = j.split(":")
+                aux += int(b)
+            lista.append((i[0],aux))
+        dic = dict(lista)
+        for key in dic:
+            dic[key] = sum(y for (x,y) in lista if x == key)
+        r12 = dict(sorted(dic.items()))
+    return r12
