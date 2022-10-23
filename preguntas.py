@@ -134,11 +134,15 @@ def pregunta_05():
     ]
 
     """
-    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+    with open("data.csv","r") as file:
         datos = file.readlines()
         d_lista = [line.split("\t") for line in datos]
-        
-    return
+        cols = [i[0:2] for i in d_lista]
+        cols = [(i[0], int(i[1])) for i in cols]
+        dic = dict(cols)
+        r5 = [(i, max(y for (x,y) in cols if x==i), min(y for (x,y) in cols if x==i)) for i in dic]
+        r5 = sorted(r5)
+    return r5
 
 
 def pregunta_06():
@@ -163,7 +167,20 @@ def pregunta_06():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col5 = [i[4] for i in d_lista]
+        col5 = [i.split(",") for i in col5]
+        lista = []
+        for i in col5:
+            for j in i:
+                aux1, aux2 = j.split(":")
+                lista.append((aux1,int(aux2)))
+        dic = dict(lista)
+        r6 = [(i, min(y for (x,y) in lista if x==i), max(y for (x,y) in lista if x==i)) for i in dic]
+        r6 = sorted(r6)
+    return r6
 
 
 def pregunta_07():
@@ -187,7 +204,18 @@ def pregunta_07():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [i[0:2] for i in d_lista]
+        dic = {int(i[1]):0 for i in cols}
+        for key in dic:
+            aux =[]
+            for i in [a for (a,b) in cols if int(b) == key]:
+                aux.append(i)
+            dic[key]=aux
+        r7 = sorted(dic.items())
+    return r7
 
 
 def pregunta_08():
@@ -212,7 +240,16 @@ def pregunta_08():
     ]
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [i[0:2] for i in d_lista]
+        dic = {int(i[1]):0 for i in cols}
+        for key in dic:
+            aux =dict([(a,b) for (a,b) in cols if int(b) == key])
+            dic[key]=list(sorted(aux))
+        r8 = sorted(dic.items())
+    return r8
 
 
 def pregunta_09():
@@ -235,7 +272,21 @@ def pregunta_09():
     }
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        col5 = [i[4] for i in d_lista]
+        col5 = [i.split(",") for i in col5]
+        lista = []
+        for i in col5:
+            for j in i:
+                aux1, aux2 = j.split(":")
+                lista.append(aux1)
+        dic = {x:0 for x in lista}
+        for key in dic:
+            dic[key] = lista.count(key)
+        r9 = dict(sorted(dic.items()))
+    return r9
 
 
 def pregunta_10():
@@ -256,7 +307,16 @@ def pregunta_10():
 
 
     """
-    return
+    with open("data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
+        cols = [(i[0],i[3],i[4]) for i in d_lista]
+        r10=[]
+        for i in cols:
+            aux = i[1].split(",")
+            aux2 = i[2].split(",")
+            r10.append((i[0],len(aux),len(aux2)))
+    return r10
 
 
 def pregunta_11():
@@ -277,6 +337,9 @@ def pregunta_11():
 
 
     """
+    with open("C:/Users/jlopezl/OneDrive - Renting Colombia S.A/Archivos/Personal/Especialización/Ciencia de los datos/programacion-en-python-JuanesLopez/data.csv","r") as file:
+        datos = file.readlines()
+        d_lista = [line.split("\t") for line in datos]
     return
 
 
